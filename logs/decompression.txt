@@ -1,0 +1,2 @@
+data/OutputFileBin/testsmall.txt.huff;data/OutputFile/testsmall2.txt;7;15;2.14286;0
+data/OutputFileBin/testsmall.txt.huff;data/OutputFile/testsmall2.txt;13;21;1.61538;0

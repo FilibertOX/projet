@@ -1,1 +1,4 @@
 data/InputFile/Blaise_Pascal.txt;data/OutputFileBin/Blaise_Pascal2.txt.huff;118026;66246;0.56128;9184
+data/InputFile/testsmall.txt;data/OutputFileBin/testsmall.txt.huff;10;7;0.70000;1
+data/InputFile/testsmall.txt;data/OutputFileBin/testsmall.txt.huff;10;7;0.70000;0
+data/InputFile/testsmall.txt;data/OutputFileBin/testsmall.txt.huff;18;13;0.72222;0
