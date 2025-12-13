@@ -1,22 +1,33 @@
 # Projet de Compression de Texte
 
-Ce projet implémente un algorithme de compression de texte basé sur le codage de Huffman adaptatif. Il permet de compresser et décompresser des fichiers texte en utilisant des structures de données arborescentes.
+Ce projet implémente un algorithme de compression de texte basé sur le codage de Huffman adaptatif. Il permet de compresser et décompresser des fichiers texte en utilisant des structures de données arborescentes. Les scripts mesurent également les performances (tailles des fichiers, taux de compression/décompression, temps d'exécution) et les enregistrent dans des fichiers de log.
 
 ## Fichiers Principaux
 
-- `compresser.py` : Script principal pour la compression d'un fichier texte.
-- `decompresser.py` : Script principal pour la décompression d'un fichier compressé.
+- `compresser.py` : Script principal pour la compression d'un fichier texte, avec logging des métriques.
+- `decompresser.py` : Script principal pour la décompression d'un fichier compressé, avec logging des métriques.
 - `compresser.sh` : Script shell pour lancer la compression.
 - `decompresser.sh` : Script shell pour lancer la décompression.
 - `exo2.py` : Fonctions pour la lecture et l'écriture de fichiers binaires.
 - `exo3.py` : Implémentation de l'algorithme de compression et décompression.
 - `sdd.py` : Structures de données (Arbre, Sdd) utilisées pour le codage.
+- `compression.txt` : Fichier de log des compressions (créé automatiquement).
+- `decompression.txt` : Fichier de log des décompressions (créé automatiquement).
+
+## Structure des Dossiers
+
+Le projet organise les fichiers dans des dossiers pour une meilleure gestion :
+
+- `data/InputFile/` : Fichiers texte d'entrée à compresser.
+- `data/OutputFileBin/` : Fichiers compressés (.huff).
+- `data/OutputFile/` : Fichiers décompressés (optionnel).
+- `data/TransitionBin/` : Fichiers intermédiaires (optionnel).
 
 ## Utilisation
 
 ### Compression
 
-Pour compresser un fichier texte :
+Pour compresser un fichier texte (peut être dans un sous-dossier) :
 
 ```bash
 ./compresser.sh <fichier_entree.txt> <fichier_sortie.huff>
@@ -24,8 +35,10 @@ Pour compresser un fichier texte :
 
 Exemple :
 ```bash
-./compresser.sh Blaise_Pascal.txt Blaise_Pascal.txt.huff
+./compresser.sh data/InputFile/Blaise_Pascal.txt data/OutputFileBin/Blaise_Pascal.txt.huff
 ```
+
+Après compression, les métriques sont ajoutées à `compression.txt`.
 
 ### Décompression
 
@@ -37,8 +50,10 @@ Pour décompresser un fichier compressé :
 
 Exemple :
 ```bash
-./decompresser.sh Blaise_Pascal.txt.huff decompressed.txt
+./decompresser.sh data/OutputFileBin/Blaise_Pascal.txt.huff data/OutputFile/decompressed.txt
 ```
+
+Après décompression, les métriques sont ajoutées à `decompression.txt`.
 
 ### Scripts Python Directs
 
@@ -53,6 +68,18 @@ Décompression :
 ```bash
 python3 decompresser.py <fichier_entree.huff> <fichier_sortie.txt>
 ```
+
+## Logging des Performances
+
+Chaque exécution de compression ou décompression enregistre automatiquement les informations suivantes dans les fichiers respectifs :
+
+### compression.txt
+- Fichier entrée ; Fichier sortie ; Taille entrée ; Taille sortie ; Taux compression ; Temps compression (ms)
+
+### decompression.txt
+- Fichier entrée ; Fichier sortie ; Taille entrée ; Taille sortie ; Taux decompression ; Temps decompression (ms)
+
+Le taux est calculé comme taille_sortie / taille_entrée (avec 5 décimales). Les fichiers de log incluent une en-tête la première fois qu'ils sont créés.
 
 ## Algorithme
 

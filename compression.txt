@@ -1,1 +1,2 @@
 
+data/InputFile/Blaise_Pascal.txt;data/OutputFileBin/Blaise_Pascal2.txt.huff;118026;66246;0.56128;9299

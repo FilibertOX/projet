@@ -17,7 +17,7 @@ if not os.path.isfile(textO):
     print(f"Erreur : le fichier '{textO}' n'existe pas.")
     sys.exit(1)
 
-textC = 'Blaise_Pascal_binary.txt'
+textC = 'data/TransitionBin/temp_compressed.txt'
 
 input_size = os.path.getsize(textO)
 
