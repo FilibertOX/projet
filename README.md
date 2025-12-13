@@ -11,8 +11,8 @@ Ce projet implémente un algorithme de compression de texte basé sur le codage 
 - `exo2.py` : Fonctions pour la lecture et l'écriture de fichiers binaires.
 - `exo3.py` : Implémentation de l'algorithme de compression et décompression.
 - `sdd.py` : Structures de données (Arbre, Sdd) utilisées pour le codage.
-- `compression.txt` : Fichier de log des compressions (créé automatiquement).
-- `decompression.txt` : Fichier de log des décompressions (créé automatiquement).
+- `compression.txt` : Fichier de log des compressions (dans `logs/`, créé automatiquement).
+- `decompression.txt` : Fichier de log des décompressions (dans `logs/`, créé automatiquement).
 
 ## Structure des Dossiers
 
@@ -22,6 +22,7 @@ Le projet organise les fichiers dans des dossiers pour une meilleure gestion :
 - `data/OutputFileBin/` : Fichiers compressés (.huff).
 - `data/OutputFile/` : Fichiers décompressés (optionnel).
 - `data/TransitionBin/` : Fichiers intermédiaires (optionnel).
+- `logs/` : Fichiers de log des performances (`compression.txt`, `decompression.txt`).
 
 ## Utilisation
 
@@ -38,7 +39,7 @@ Exemple :
 ./compresser.sh data/InputFile/Blaise_Pascal.txt data/OutputFileBin/Blaise_Pascal.txt.huff
 ```
 
-Après compression, les métriques sont ajoutées à `compression.txt`.
+Après compression, les métriques sont ajoutées à `logs/compression.txt`.
 
 ### Décompression
 
@@ -53,7 +54,7 @@ Exemple :
 ./decompresser.sh data/OutputFileBin/Blaise_Pascal.txt.huff data/OutputFile/decompressed.txt
 ```
 
-Après décompression, les métriques sont ajoutées à `decompression.txt`.
+Après décompression, les métriques sont ajoutées à `logs/decompression.txt`.
 
 ### Scripts Python Directs
 
@@ -71,7 +72,7 @@ python3 decompresser.py <fichier_entree.huff> <fichier_sortie.txt>
 
 ## Logging des Performances
 
-Chaque exécution de compression ou décompression enregistre automatiquement les informations suivantes dans les fichiers respectifs :
+Chaque exécution de compression ou décompression enregistre automatiquement les informations suivantes dans les fichiers respectifs du dossier `logs/` :
 
 ### compression.txt
 - Fichier entrée ; Fichier sortie ; Taille entrée ; Taille sortie ; Taux compression ; Temps compression (ms)

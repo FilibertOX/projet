@@ -1,0 +1,2 @@
+Fichier entrée;Fichier sortie;Taille entrée;Taille sortie;Taux compression;Temps compression (ms)
+data/InputFile/Blaise_Pascal.txt;data/OutputFileBin/Blaise_Pascal2.txt.huff;118026;66246;0.56128;9184

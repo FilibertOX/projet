@@ -33,7 +33,8 @@ decompression_time_ms = (end_time - start_time) * 1000
 output_size = os.path.getsize(textFinal)
 decompression_ratio = output_size / input_size if input_size > 0 else 0
 
-with open('decompression.txt', 'a', encoding='utf-8') as f:
-    if os.path.getsize('decompression.txt') == 0:
+os.makedirs('logs', exist_ok=True)
+with open('logs/decompression.txt', 'a', encoding='utf-8') as f:
+    if os.path.getsize('logs/decompression.txt') == 0:
         f.write("Fichier entrée;Fichier sortie;Taille entrée;Taille sortie;Taux decompression;Temps decompression (ms)\n")
     f.write(f"{textO};{textFinal};{input_size};{output_size};{decompression_ratio:.5f};{decompression_time_ms:.0f}\n")
