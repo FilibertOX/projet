@@ -41,8 +41,4 @@ compression_ratio = output_size / input_size if input_size > 0 else 0
 
 os.makedirs('logs', exist_ok=True)
 with open('logs/compression.txt', 'a', encoding='utf-8') as f:
-    if os.path.getsize('logs/compression.txt') == 0:
-        f.write("Fichier entrée;Fichier sortie;Taille entrée;Taille sortie;Taux compression;Temps compression (ms)\n")
     f.write(f"{textO};{textCBin};{input_size};{output_size};{compression_ratio:.5f};{compression_time_ms:.0f}\n")
-
-
