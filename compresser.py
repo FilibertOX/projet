@@ -1,33 +1,47 @@
 import sys
 import os
+import time
 from exo3 import compresion, ecriture
 
-def main():
-    # Vérification du nombre d'arguments
-    if len(sys.argv) != 3:
-        print("Usage : python main.py <fichier1> <fichier2>")
-        sys.exit(1)
 
-    textO = sys.argv[1]
-    textCBin = sys.argv[2]
+# Vérification du nombre d'arguments
+if len(sys.argv) != 3:
+    print("Usage : python main.py <fichier1> <fichier2>")
+    sys.exit(1)
 
-    # Vérification de l'existence des fichiers
-    if not os.path.isfile(textO):
-        print(f"Erreur : le fichier '{textO}' n'existe pas.")
-        sys.exit(1)
+textO = sys.argv[1]
+textCBin = sys.argv[2]
 
-    textC = 'Blaise_Pascal_binary.txt'
+# Vérification de l'existence des fichiers
+if not os.path.isfile(textO):
+    print(f"Erreur : le fichier '{textO}' n'existe pas.")
+    sys.exit(1)
 
-    with open(textO, 'r', encoding='utf-8') as f:
-        text_in = f.read()
-        print("Texte lu depuis", textO)
-        print(text_in)
+textC = 'Blaise_Pascal_binary.txt'
 
-    compressed = compresion(text_in)
+input_size = os.path.getsize(textO)
 
-    with open(textC, 'w', encoding='utf-8') as f:
-        f.write(compressed)
+start_time = time.time()
 
-    ecriture(textC, textCBin)
+with open(textO, 'r', encoding='utf-8') as f:
+    text_in = f.read()
+
+compressed = compresion(text_in)
+
+with open(textC, 'w', encoding='utf-8') as f:
+    f.write(compressed)
+
+ecriture(textC, textCBin)
+
+end_time = time.time()
+compression_time_ms = (end_time - start_time) * 1000
+
+output_size = os.path.getsize(textCBin)
+compression_ratio = output_size / input_size if input_size > 0 else 0
+
+with open('compression.txt', 'a', encoding='utf-8') as f:
+    if os.path.getsize('compression.txt') == 0:
+        f.write("Fichier entrée;Fichier sortie;Taille entrée;Taille sortie;Taux compression;Temps compression (ms)\n")
+    f.write(f"{textO};{textCBin};{input_size};{output_size};{compression_ratio:.5f};{compression_time_ms:.0f}\n")
 
 
