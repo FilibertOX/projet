@@ -16,11 +16,7 @@ def main():
         print(f"Erreur : le fichier '{textO}' n'existe pas.")
         sys.exit(1)
 
-    if not os.path.isfile(textFinal):
-        print(f"Erreur : le fichier '{textFinal}' n'existe pas.")
-        sys.exit(1)
-
-    res=lecture(textFinal)
+    res=lecture(textO)
 
     decompressed = decompression(res)
 

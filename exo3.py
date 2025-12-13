@@ -389,7 +389,7 @@ print("Texte décompressé : ",dtc)
 # Exécution automatique sécurisée : si un fichier nommé 'Blaise_Pascal' existe dans le dossier
 # on lance le pipeline demandé et on écrit 'Blaise_Pascal2.txt.huff' et 'Blaise_Pascal2'.
 
-"""
+
 textO = 'Blaise_Pascal.txt'
 textC = 'Blaise_Pascal_binary.txt'
 textCBin = 'Blaise_Pascal2.txt.huff'
@@ -411,4 +411,3 @@ decompressed = decompression(res)
 
 with open(textFinal, 'w', encoding='utf-8') as f:
 	f.write(decompressed)
-"""

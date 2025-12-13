@@ -16,10 +16,6 @@ def main():
         print(f"Erreur : le fichier '{textO}' n'existe pas.")
         sys.exit(1)
 
-    if not os.path.isfile(textCBin):
-        print(f"Erreur : le fichier '{textCBin}' n'existe pas.")
-        sys.exit(1)
-
     textC = 'Blaise_Pascal_binary.txt'
 
     with open(textO, 'r', encoding='utf-8') as f:
