@@ -1,2 +1,12 @@
 data/OutputFileBin/testsmall.txt.huff;data/OutputFile/testsmall2.txt;7;15;2.14286;0
 data/OutputFileBin/testsmall.txt.huff;data/OutputFile/testsmall2.txt;13;21;1.61538;0
+data/OutputFileBin/testsmall.txt.huff;data/OutputFile/testsmall2.txt;13;21;1.61538;2
+data/OutputFileBin/texte_anglais.txt.huff;data/OutputFile/texte_anglais2.txt;244487;441189;1.80455;77138
+data/OutputFileBin/texte_arabe.txt.huff;data/OutputFile/texte_arabe2.txt;21351;40564;1.89986;8443
+data/OutputFileBin/texte_japonais.txt.huff;data/OutputFile/texte_japonais2.txt;21473;37921;1.76599;40336
+data/OutputFileBin/texte_chinois.txt.huff;data/OutputFile/texte_chinois2.txt;123184;287589;2.33463;941116
+data/OutputFileBin/texte_tchec.txt.huff;data/OutputFile/texte_tchec2.txt;463033;832261;1.79741;168631
+
+
+
+data/OutputFileBin/test_exo4.txt.huff;data/OutputFile/test_exo4_2.txt;4167;2962;0.71082;2970

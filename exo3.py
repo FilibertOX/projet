@@ -1,5 +1,7 @@
 from sdd import Arbre, Sdd
 from exo2 import lecture, ecriture
+import os
+import time
 
 
 def code_utf8(s):
@@ -15,7 +17,7 @@ def compresion(text):
 	#print(H.valeurs)
 	i=0
 	res=""
-	while i < len(text): 
+	while i < len(text): #(r=read(text))!=0
 		#afficherArbre(H.racine)
 		#print (i)
 		#print("lecture de la lettre ",text[i])
@@ -37,7 +39,6 @@ def compresion(text):
 def decompression(textC):
 	H=Sdd()
 	i=0
-
 	if textC[0] == '0':
 		lettre=textC[0:8]
 		i+=7
@@ -153,6 +154,7 @@ def modification(sdd,s):
 		#afficherArbre(H)
 		return sdd
 	elif s not in sdd.valeurs:
+		
 		q=sdd.cheminSpecial.pere
 		newNoeud=Arbre(None,q,1)
 		newNoeud.gauche=sdd.cheminSpecial
@@ -163,7 +165,7 @@ def modification(sdd,s):
 
 		sdd.valeurs[s]=sdd.valeurs["special"]+'1'
 		sdd.valeurs["special"]+='0'
-	
+		suivants=suivantsList(suivantsTab(sdd.racine,[],0))
 		
 	else:
 		q=feuille(sdd,s)
@@ -175,7 +177,7 @@ def modification(sdd,s):
 			q.poids+=1
 			#print(q.poids)
 			q=q.pere
-	return traitement(sdd,q)
+	return traitement(sdd,q,suivants)
 			
 
 def feuille(sdd,s):
@@ -191,15 +193,9 @@ def feuille(sdd,s):
 	return H
 
 """
-def traitement(H,Q):
-
-	suivants=suivantsList(suivantsTab(H.racine,[],0))
-
-	
+def traitement(H,Q,suivants):
 	Qi=Q
-
-	while Qi is not None:
-		if Qi.pere
+	while Qi.pere is not None:
 		Qi.poids+=1
 		Qisuivant=suivants[suivants.index(Qi)+1]
 		if Qi.poids >= Qisuivant.poids:
@@ -208,8 +204,8 @@ def traitement(H,Q):
 			b=finBloc(m,suivants)
 			print	("Echange entre ",m.valeur," et ",b.valeur)
 			echanger(H,m,b)
-			
-			return traitement(H,m.pere)
+			suivants=suivantsList(suivantsTab(H.racine,[],0))
+			return traitement(H,m.pere,suivants)
 
 
 		Qi=Qi.pere
@@ -217,9 +213,9 @@ def traitement(H,Q):
 """
 
 
-def traitement(H,Q):
+def traitement(H,Q,suivants):
 	#print("heho")
-	suivants=suivantsList(suivantsTab(H.racine,[],0))
+	
 	#afficherSuiv(suivants)
 	Qi=Q
 	Gamma_Q=[Qi]
@@ -244,11 +240,12 @@ def traitement(H,Q):
 			
 			noeud.poids+=1
 		if m!=b:
-			"""afficherArbre(H.racine)
-			print	("Echange entre ",m," et ",b)"""
+			#afficherArbre(H.racine)
+			#print	("Echange entre ",m," et ",b)
 			echanger(H,m,b)
-		return traitement(H,m.pere)
-	
+			suivants=suivantsList(suivantsTab(H.racine,[],0))
+		return traitement(H,m.pere,suivants)
+
 
 def echanger(H,m,b):
 
@@ -369,7 +366,6 @@ def afficherSuiv(tab):
 	for i in tab:
 		print(i.valeur,i.poids,"->")
 
-
 """
 codeFix={'a':'01100001','b':'01100010','c':'01100011','r':'01110010','m':'01101101'}
 text="carambarbcm"
@@ -383,21 +379,21 @@ print("Texte compressé : ",tc)
 print("Texte décompressé : ",dtc)
 """
 
-
-
+"""
 # Exécution automatique sécurisée : si un fichier nommé 'Blaise_Pascal' existe dans le dossier
 # on lance le pipeline demandé et on écrit 'Blaise_Pascal2.txt.huff' et 'Blaise_Pascal2'.
-
-"""
 textO = 'Blaise_Pascal.txt'
 textC = 'Blaise_Pascal_binary.txt'
 textCBin = 'Blaise_Pascal2.txt.huff'
 textFinal = 'Blaise_Pascal2.txt'
-
 with open(textO, 'r', encoding='utf-8') as f:
 	text_in = f.read()
 
+debutComp=time.time()
 compressed = compresion(text_in)
+finComp=time.time()
+
+print("Temps de compression :",finComp - debutComp," secondes")
 
 with open(textC, 'w', encoding='utf-8') as f:
     f.write(compressed)
@@ -406,8 +402,17 @@ ecriture(textC, textCBin)
 
 res=lecture(textCBin)
 
+debutDecomp=time.time()
 decompressed = decompression(res)
+finDecomp=time.time()
+
+print("Temps de décompression :",finDecomp - debutDecomp," secondes")
 
 with open(textFinal, 'w', encoding='utf-8') as f:
 	f.write(decompressed)
+f=open(textO,'r')
+f2=open(textCBin,'rb')
+print("Taux de compression:",len(f2.read())/len(f.read()))
+
+
 """

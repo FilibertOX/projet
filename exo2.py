@@ -39,7 +39,7 @@ def ecriture(fichier_text,fichier_bin):
 			if car[i] == '1':
 				byte += 1 << 7-i
 			i+=1
-		bin.write(byte.to_bytes())
+		bin.write(byte.to_bytes(1, 'big'))
 
 
 	text.close()
