@@ -19,3 +19,4 @@ data/InputFile/texte_chinois.txt;data/OutputFileBin/texte_chinois.txt.huff;28758
 data/InputFile/Blaise_Pascal.txt;data/OutputFileBin/Blaise_Pascal2.txt.huff;118026;66246;0.56128;13536
 exo3.py;data/OutputFileBin/exo3.txt.huff;8338;5495;0.65903;817
 test_exo4.txt;data/OutputFileBin/test_exo4.txt.huff;2962;4167;1.40682;3095
+text_exp.txt;data/OutputFile/text_exp.txt.huff;26357;6710;0.25458;4633

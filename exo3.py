@@ -181,7 +181,7 @@ def modification(sdd,s):
 			
 
 def feuille(sdd,s):
-	H=sdd.racine
+	H=sdd.racine=
 	chemin=sdd.valeurs[s]
 	i=0
 	while i < len(chemin):

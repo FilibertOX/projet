@@ -23,7 +23,7 @@ def generate_random_utf8_text(n,fichier):
     f.write(''.join(text))
     f.close()
 
-generate_random_utf8_text(1000,'test_exo4.txt')
+generate_random_utf8_text(10000,'test_exo4.txt')
 """
 textO = 'test_exo4.txt'
 textC = 'test_exo4_binary.txt'
